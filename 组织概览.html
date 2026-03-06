@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>c圈组织概览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #ffffff;
+            min-height: 100vh;
+            padding: 40px 0;
+            position: relative;
+        }
+        .top-container {
+            width: 100%;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 40px;
+        }
+        .top-title {
+            width: 100%;
+            padding: 8px 16px;
+            text-align: center;
+        }
+        .top-title h1 {
+            font-size: 20px;
+            font-weight: 900;
+            color: #000;
+            white-space: nowrap;
+        }
+        .top-nav {
+            width: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 8px 16px;
+        }
+        .nav-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+        }
+        .nav-list a {
+            text-decoration: none;
+            color: #0066cc;
+            font-size: 16px;
+        }
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+        .main-title-box {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            text-align: left;
+        }
+        .evil-text {
+            font-size: 36px;
+            font-weight: 900;
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+        .start-text {
+            font-size: 28px;
+            font-weight: 900;
+            color: #000;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        .org-pic {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+        .content-wrap {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-right: 50px;
+            position: relative;
+        }
+        .content-box {
+            padding: 24px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        .content-tips {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+        }
+        .org-section {
+            margin-bottom: 40px;
+        }
+        .org-letter {
+            font-size: 24px;
+            font-weight: 900;
+            color: #0066cc;
+            text-shadow: 0 0 8px rgba(255,255,255,0.9),0 0 12px rgba(0,102,204,0.6);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+        }
+        .org-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+        }
+        .org-item {
+            font-size: 16px;
+            color: #333;
+            padding: 8px 16px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .letter-nav {
+            position: fixed;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            z-index: 98;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            padding: 6px 3px;
+        }
+        .letter-item {
+            display: block;
+            width: 22px;
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: #666;
+            text-decoration: none;
+            border-radius: 50%;
+            margin: 2px auto;
+            transition: all 0.2s ease;
+        }
+        .letter-item:hover {
+            background-color: #0066cc;
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255,255,255,0.9);
+        }
+        .letter-item.active {
+            background-color: #0066cc;
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255,255,255,0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <div class="top-title">
+            <h1>聚是一团火，散是满天星</h1>
+        </div>
+        <nav class="top-nav">
+            <img class="nav-icon" src="firstlogo.jpg" alt="蓝猫LOGO">
+            <ul class="nav-list">
+                <li><a href="蓝猫神教（12）.html#lanmao-bar" target="_blank">关于蓝猫</a></li>
+                <li><a href="关于我们.html" target="_blank">关于团队</a></li>
+                <li><a href="关于c圈.html" target="_blank">关于c圈</a></li>
+                <li><a href="更多详情.html" target="_blank">更多详情</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-title-box">
+        <span class="evil-text">恶俗</span>
+        <span class="start-text">的开端</span>
+        <img src="蓝猫驻c.jpg" alt="恶俗的开端配图" class="org-pic">
+    </div>
+    <div class="content-wrap">
+        <div class="content-box">
+            <p class="content-tips">ep，红酒，李伟杰，喻森一，无恶，小鑫，更迭换代，人人都想在这个圈子分到属于自己的一杯羹，划天下之大势，有人独统，就有人反抗，c圈的先祖们就是在光阴中，划分了今后独属于自己与后辈的地盘<br><br>
+            <strong>但是</strong>那些长眠于生活的先祖，看到如今的c圈，是否会哭泣呢</p>
+        </div>
+        <div class="org-section" id="letter-A">
+            <h3 class="org-letter">A</h3>
+            <div class="org-list">
+                <div class="org-item">阿尔法</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-B">
+            <h3 class="org-letter">B</h3>
+            <div class="org-list">
+                <div class="org-item">白火</div>
+                <div class="org-item">白山</div>
+                <div class="org-item">波协</div>
+                <div class="org-item">北洋</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-C">
+            <h3 class="org-letter">C</h3>
+            <div class="org-list">
+                <div class="org-item">茶馆</div>
+                <div class="org-item">沧海观</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-D">
+            <h3 class="org-letter">D</h3>
+            <div class="org-list">
+                <div class="org-item">东乐</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-E">
+            <h3 class="org-letter">E</h3>
+            <div class="org-list">
+                <div class="org-item">暂无代表性组织-欢迎投稿</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-F">
+            <h3 class="org-letter">F</h3>
+            <div class="org-list">
+                <div class="org-item">梵天</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-G">
+            <h3 class="org-letter">G</h3>
+            <div class="org-list">
+                <div class="org-item">暂无代表性组织-欢迎投稿</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-H">
+            <h3 class="org-letter">H</h3>
+            <div class="org-list">
+                <div class="org-item">黑体</div>
+                <div class="org-item">黑水c部</div>
+                <div class="org-item">幻想乡</div>
+                <div class="org-item">唤心</div>
+                <div class="org-item">花间令</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-I">
+            <h3 class="org-letter">I</h3>
+            <div class="org-list">
+                <div class="org-item">暂无代表性组织-欢迎投稿</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-J">
+            <h3 class="org-letter">J</h3>
+            <div class="org-list">
+                <div class="org-item">江家</div>
+                <div class="org-item">京海</div>
+                <div class="org-item">鲸落十里</div>
+                <div class="org-item">净天</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-K">
+            <h3 class="org-letter">K</h3>
+            <div class="org-list">
+                <div class="org-item">狂歌</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-L">
+            <h3 class="org-letter">L</h3>
+            <div class="org-list">
+                <div class="org-item">铃鸢</div>
+                <div class="org-item">铃兰驻c</div>
+                <div class="org-item">梁山</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-M">
+            <h3 class="org-letter">M</h3>
+            <div class="org-list">
+                <div class="org-item">魔都</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-N">
+            <h3 class="org-letter">N</h3>
+            <div class="org-list">
+                <div class="org-item">暂无代表性组织-欢迎投稿</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-O">
+            <h3 class="org-letter">O</h3>
+            <div class="org-list">
+                <div class="org-item">暂无代表性组织-欢迎投稿</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-P">
+            <h3 class="org-letter">P</h3>
+            <div class="org-list">
+                <div class="org-item">平安夜</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-Q">
+            <h3 class="org-letter">Q</h3>
+            <div class="org-list">
+                <div class="org-item">却门</div>
+                <div class="org-item">祈恋</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-R">
+            <h3 class="org-letter">R</h3>
+            <div class="org-list">
+                <div class="org-item">7rm钭</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-S">
+            <h3 class="org-letter">S</h3>
+            <div class="org-list">
+                <div class="org-item">书剑</div>
+                <div class="org-item">圣堂</div>
+                <div class="org-item">神风驻C</div>
+                <div class="org-item">神火联邦</div>
+                <div class="org-item">神奈川驻C</div>
+                <div class="org-item">三神</div>
+                <div class="org-item">山岳随行</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-T">
+            <h3 class="org-letter">T</h3>
+            <div class="org-list">
+                <div class="org-item">叹氏</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-U">
+            <h3 class="org-letter">U</h3>
+            <div class="org-list">
+                <div class="org-item">暂无代表性组织-欢迎投稿</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-V">
+            <h3 class="org-letter">V</h3>
+            <div class="org-list">
+                <div class="org-item">暂无代表性组织-欢迎投稿</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-W">
+            <h3 class="org-letter">W</h3>
+            <div class="org-list">
+                <div class="org-item">无间</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-X">
+            <h3 class="org-letter">X</h3>
+            <div class="org-list">
+                <div class="org-item">新义安</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-Y">
+            <h3 class="org-letter">Y</h3>
+            <div class="org-list">
+                <div class="org-item">元庭</div>
+                <div class="org-item">永恒</div>
+                <div class="org-item">圆桌社</div>
+            </div>
+        </div>
+        <div class="org-section" id="letter-Z">
+            <h3 class="org-letter">Z</h3>
+            <div class="org-list">
+                <div class="org-item">终章</div>
+            </div>
+        </div>
+    </div>
+    <div class="letter-nav">
+        <a href="#letter-A" class="letter-item">A</a>
+        <a href="#letter-B" class="letter-item">B</a>
+        <a href="#letter-C" class="letter-item">C</a>
+        <a href="#letter-D" class="letter-item">D</a>
+        <a href="#letter-E" class="letter-item">E</a>
+        <a href="#letter-F" class="letter-item">F</a>
+        <a href="#letter-G" class="letter-item">G</a>
+        <a href="#letter-H" class="letter-item">H</a>
+        <a href="#letter-I" class="letter-item">I</a>
+        <a href="#letter-J" class="letter-item">J</a>
+        <a href="#letter-K" class="letter-item">K</a>
+        <a href="#letter-L" class="letter-item">L</a>
+        <a href="#letter-M" class="letter-item">M</a>
+        <a href="#letter-N" class="letter-item">N</a>
+        <a href="#letter-O" class="letter-item">O</a>
+        <a href="#letter-P" class="letter-item">P</a>
+        <a href="#letter-Q" class="letter-item">Q</a>
+        <a href="#letter-R" class="letter-item">R</a>
+        <a href="#letter-S" class="letter-item">S</a>
+        <a href="#letter-T" class="letter-item">T</a>
+        <a href="#letter-U" class="letter-item">U</a>
+        <a href="#letter-V" class="letter-item">V</a>
+        <a href="#letter-W" class="letter-item">W</a>
+        <a href="#letter-X" class="letter-item">X</a>
+        <a href="#letter-Y" class="letter-item">Y</a>
+        <a href="#letter-Z" class="letter-item">Z</a>
+    </div>
+    <script>
+        document.querySelectorAll('.letter-item').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 120,
+                        behavior: 'smooth'
+                    });
+                    document.querySelectorAll('.letter-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.org-section');
+            const navItems = document.querySelectorAll('.letter-item');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.offsetHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${currentSection}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
