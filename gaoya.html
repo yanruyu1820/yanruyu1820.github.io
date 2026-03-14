@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文学艺术采集/ - 蓝猫维基</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
+        .top-container {
+            width: 100%;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            border-bottom: 1px solid #eee;
+        }
+        .top-title {
+            width: 100%;
+            padding: 8px 16px;
+            text-align: center;
+        }
+        .top-title h1 {
+            font-size: 20px;
+            font-weight: 900;
+            color: #000;
+            white-space: nowrap;
+        }
+        .top-nav {
+            width: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 8px 16px;
+        }
+        .nav-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+        }
+        .nav-list a {
+            text-decoration: none;
+            color: #0066cc;
+            font-size: 16px;
+        }
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px 16px;
+        }
+        .page-title {
+            font-size: 36px;
+            font-weight: normal;
+            color: #222;
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+        .title-toolbar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .title-toolbar .edit-icon {
+            font-size: 20px;
+            color: #666;
+            cursor: pointer;
+        }
+        .warning-box {
+            background-color: #fff;
+            border: 1px solid #eee;
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+            line-height: 1.8;
+            font-size: 18px;
+            color: #333;
+        }
+        .warning-box strong {
+            color: #b00;
+            font-size: 22px;
+        }
+        .brain-warning {
+            display: flex;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            margin-bottom: 24px;
+        }
+        .brain-warning .sidebar {
+            width: 12px;
+            background-color: #b00;
+        }
+        .brain-warning.navy .sidebar {
+            background-color: #0a3d62;
+        }
+        .brain-warning .content {
+            display: flex;
+            padding: 16px;
+            gap: 16px;
+            align-items: center;
+        }
+        .img-box {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .brain-warning .text-area {
+            flex: 1;
+        }
+        .brain-warning .text-area h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #222;
+        }
+        .brain-warning .text-area p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+        }
+        .article-exhibition {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 2px solid #eee;
+        }
+        .exhibition-title {
+            font-size: 28px;
+            color: #222;
+            margin-bottom: 24px;
+            font-weight: normal;
+        }
+        .article-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .article-header {
+            padding: 16px;
+            background-color: #fafafa;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .article-header h3 {
+            font-size: 20px;
+            color: #222;
+            font-weight: 500;
+        }
+        .toggle-icon {
+            font-size: 20px;
+            color: #666;
+            transition: transform 0.3s ease;
+        }
+        .article-item.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        .article-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s ease;
+        }
+        .article-item.active .article-content {
+            grid-template-rows: 1fr;
+        }
+        .article-body {
+            overflow: hidden;
+            padding: 0 16px;
+        }
+        .article-img {
+            width: 100%;
+            height: 200px;
+            margin: 16px 0;
+            overflow: hidden;
+            background-color: #f5f5f5;
+        }
+        .article-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .article-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 16px;
+        }
+        .article-meta {
+            font-size: 14px;
+            color: #999;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <div class="top-title">
+            <h1>聚是一团火，散是满天星</h1>
+        </div>
+        <nav class="top-nav">
+            <img class="nav-icon" src="firstlogo.jpg" alt="蓝猫LOGO">
+            <ul class="nav-list">
+                <li><a href="./lanmao.html" target="_blank">关于蓝猫</a></li>
+                <li><a href="./aboutus.html" target="_blank">关于团队</a></li>
+                <li><a href="./codm.html" target="_blank">关于c圈</a></li>
+                <li><a href="./more.html" target="_blank">更多详情</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <h1 class="page-title">文集</h1>
+        <div class="title-toolbar">
+            <div class="edit-icon">🅰</div>
+        </div>
+        <div class="warning-box">
+            <strong>温馨提示：</strong>该站设置此页面的目的是为了使更多的浏览者，加入深度文学创作的队伍，该页面后续会持续更新，同时也警告此页面有些语句过于冗杂，脑容量不够的游客们请自行回避以免造成不适。
+        </div>
+        <div class="brain-warning">
+            <div class="sidebar"></div>
+            <div class="content">
+                <div class="img-box">
+                    <img src="mohebeian.jpg" alt="漠河">
+                </div>
+                <div class="text-area">
+                    <h3>大脑升级警告</h3>
+                    <p>本站开设此页面来提升该站的综合性素养以及儒雅底蕴。</p>
+                </div>
+            </div>
+        </div>
+        <div class="brain-warning.navy">
+            <div class="sidebar"></div>
+            <div class="content">
+                <div class="img-box">
+                    <img src="mohe.png" alt="漠河">
+                </div>
+                <div class="text-area">
+                    <h3>详情声明</h3>
+                    <p>该页面由编辑<strong>漠河</strong>先生全权摘录，若浏览者在访问该页面时，认为自己的作品可以为大家带来沉思，逗乐，自省等益效，可以联系小编进行投稿。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="article-exhibition">
+            <h2 class="exhibition-title">文章展览</h2>
+            
+            <div class="article-item">
+                <div class="article-header">
+                    <h3>时间真的能治愈一切，还是让人习惯了痛？</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="article-content">
+                    <div class="article-body">
+                        <div class="article-img">
+                            <img src="wz.jpg" alt="配图">
+                        </div>
+                        <div class="article-text">
+                            我们总在受伤后听见一句安慰：“没事，时间会治愈一切。”于是我们抱着期待往前走，以为某一天回头看，那些撕心裂肺的难过、求而不得的遗憾、深入骨髓的委屈，都会被岁月轻轻抹平。可走着走着才发现，有些伤口看似结痂，一碰还是会疼；有些人明明淡出了生活，想起时心里依旧空了一块。于是我们开始怀疑：时间到底是治愈者，还是只是让我们学会了忍着痛生活？
+ 时间从来不是神奇的药膏，它不会主动抹去伤痛，更不会让发生过的事情消失。那些让你深夜痛哭的经历，那些刻在记忆里的伤害，不会因为日子一天天过去，就凭空消散。失去的人不会回来，做错的事无法重来，受过的委屈也不会凭空变成释怀。时间只是一条不停向前的河，它不负责打捞你的难过，只负责推着你往前走，哪怕你满心抗拒，也不得不跟着时光的脚步，继续面对三餐四季，面对生活的琐碎与奔波。
+ 所谓的“治愈”，不过是时间给了我们距离，让我们站在更远的地方，重新看待曾经的伤痛。年少时觉得天塌下来的大事，时隔多年再看，或许只是人生里的一道小坎；曾经以为熬不过去的低谷，回头看时，才发现自己早已踩着那些艰难，走到了光亮里。不是伤痛变轻了，而是我们长大了，眼界宽了，内心的承受力，也在时光里慢慢变强了。就像小时候摔一跤会嚎啕大哭，成年后即便摔得遍体鳞伤，也能拍拍灰尘站起来，不是不疼，而是我们懂得了，生活还要继续。
+ 而更多时候，我们以为的治愈，其实是习惯了疼痛。那些没有被真正化解的情绪，没有被好好告别的遗憾，没有被抚平的委屈，并没有消失，而是藏进了心底最深处，变成了一种隐性的痛。就像一根扎进肉里的刺，没有被拔出来，只是被皮肤慢慢包裹，平日里不会刻意察觉，可一旦触碰到相似的场景、相似的话语，尖锐的疼就会瞬间袭来。我们学会了在难过时强装微笑，学会了在深夜独自消化情绪，学会了对伤痛闭口不谈，不是不疼了，而是我们知道，喊疼也无用，只能把痛揉进日常，变成生活的一部分。
+ 我们习惯了带着遗憾前行，习惯了在某个瞬间突然沉默，习惯了把最柔软的伤口藏起来，不让人看见。这种习惯，是时光赋予我们的铠甲，也是我们与生活和解的方式。我们不再执着于追问“为什么是我”，不再纠结于“如果当初”，不是原谅了所有伤害，而是明白了，纠结过往，只会困住现在；抱着伤痛，只会错过未来。时间让我们明白，人生本就是一边失去，一边拥有，一边受伤，一边前行。
+ 真正的治愈，从来不是忘记，不是不痛，而是与疼痛和平共处。是即便心里有疤，也能坦然面对；是即便经历过黑暗，也依然愿意相信光亮；是想起曾经的伤痛，不再有怨恨，不再有不甘，只是轻轻叹一口气，然后继续往前走。时间没有治好我们的伤，它只是让我们学会了，带着伤也能好好生活；它没有抚平所有的痛，只是让我们懂得，痛也是人生的一部分，接纳它，放下它，才能轻装前行。
+ 我们终其一生，都在与自己的情绪和解，与过往的经历和解。时间不是治愈一切的良药，它只是一个容器，装着我们的眼泪与成长，装着我们的遗憾与坚强。而真正能治愈我们的，从来不是时间本身，而是时间里，慢慢学会释怀、学会坚强、学会与自己相处的自己。
+ 那些以为过不去的坎，终究会在岁月里慢慢沉淀；那些忘不掉的人和事，终究会在时光里慢慢淡然。不是不痛了，而是我们不再让痛定义自己；不是治愈了，而是我们学会了在痛里开出花来，在时光里，活成更从容、更强大的模样。
+ 这便是时间最好的意义：它不治愈伤痛，却让我们在伤痛中，长成了能扛住风雨的人。
+                        </div>
+                        <div class="article-meta">
+                            <span>作者：蓝猫神教吧吧主</span>
+                            <span>发布时间：2026-03-09</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-item">
+                <div class="article-header">
+                    <h3>向死而生；生命因有限而真贵</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="article-content">
+                    <div class="article-body">
+                        <div class="article-img">
+                            <img src="wz1.jpg" alt="配图">
+                        </div>
+                        <div class="article-text">
+                           死亡，是每个人终将面对的命题，它沉默、冰冷，却又无处不在。从古至今，人类对死亡充满恐惧、好奇与思索，有人视其为生命的尽头，有人将其看作灵魂的启程，而在理性与感性的交织中，死亡并非生命的敌人，而是唤醒我们认真活着的清醒剂。它以必然的终结，赋予生命重量与意义，让每一段时光、每一次相遇、每一份热爱，都变得无可替代。
+ 从自然本质而言，死亡是万物循环的客观规律，没有任何生命能脱离生灭法则。草木春生秋枯，四季轮回交替，世间一切存在都有始有终，人类亦是自然的一部分，从出生起就注定走向衰老与消亡。这不是残酷，而是自然最公平的秩序。正是因为生命有限，时光才显得珍贵；正是因为离别注定，陪伴才显得温暖。若生命无限，时光便会沦为廉价的消耗，成长失去动力，珍惜失去意义，世界也会在永恒中变得麻木与荒芜。死亡是自然的新陈代谢，淘汰旧的生命，孕育新的希望，让世界始终保持流动与生机，让每一个生命的存在，都成为短暂却独特的奇迹。
+ 人类之所以对死亡感到恐惧，并非畏惧消亡本身，而是害怕失去。我们害怕失去亲人爱人，害怕未完成的梦想落空，害怕一生的努力被遗忘，害怕自我的存在彻底归于虚无。这种恐惧根植于对生命的热爱，是人性最真实的反应。但恐惧不该成为逃避的理由，反而应成为思考的起点。孔子言“未知生，焉知死”，而真正的生命觉醒，恰恰始于正视死亡。当我们清楚生命有尽头，才不会浑浑噩噩虚度光阴；当我们明白一切终将逝去，才会放下无谓的执念与纷争；当我们接纳死亡的必然，才会专注于当下，认真去爱、去感受、去创造。死亡像一面镜子，照见我们内心真正在乎的事物，让我们从浮躁的世俗中抽离，回归生命本真。
+ 死亡从来不是彻底的虚无，而是存在形式的转换。生理上的死亡是肉体的消亡，是无法逆转的自然结果，但精神与记忆的死亡，才是真正的消失。正如马尔克斯所说，生命中真正的死亡，是世界上再没有一个人记得你。肉体终会化为尘土，但思想、品格、温暖与爱，可以长久留存在他人心中。先贤的智慧跨越千年仍在指引世人，平凡人的善良与坚守会被亲友铭记，那些为他人、为社会付出的人，从未真正离开。他们以精神的方式延续着生命，让有限的肉身存在，化作无限的精神永恒。这也告诉我们，生命的价值不在于长度，而在于是否活得真诚、是否留下温暖、是否对世界有过温柔的贡献。
+ 面对死亡，最成熟的态度是向死而生。德国哲学家海德格尔提出，人是向死而在的存在，死亡是生命最本己、最无法逃避的可能。接纳死亡，不是消极等待终点，而是以终点为标尺，清醒、热烈、负责地活着。向死而生，是放下对名利的过度追逐，不再为琐事内耗，专注于内心的热爱；是珍惜与家人朋友的相伴，不留遗憾地表达爱意；是勇敢面对挫折与困难，不辜负仅有一次的生命；是在有限的时光里，活出自己的价值与光芒。它让我们明白，生命没有来日方长，每一个当下，都是最值得珍惜的礼物。
+ 在快节奏的现代生活中，很多人刻意回避死亡的话题，仿佛不提便不会来临。可回避死亡，就是回避生命的本质。回避会让我们陷入拖延、迷茫与浪费，直到临近终点才追悔莫及。正视死亡，从来不是悲观，而是最深的热爱。我们无法决定生命的长度，但可以拓宽它的宽度；无法避免肉体的消亡，但可以提升生命的高度。死亡不是生命的缺憾，而是让生命完整的最后一块拼图。
+ 生如夏花绚烂，死如秋叶静美。死亡是生命的终章，却不是意义的终点。它教会我们珍惜，教会我们放下，教会我们真诚，教会我们在有限的时光里，活出无限的价值。接纳死亡的必然，认真活好每一个当下，以热爱对抗虚无，以温柔对待世界，便是对生命最好的尊重。向死而生，方能不负此生，不负这唯一的人间旅程。
+                        </div>
+                        <div class="article-meta">
+                            <span>作者：蓝猫神教吧吧主</span>
+                            <span>发布时间：2026-03-05</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.article-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const articleItem = header.parentElement;
+                articleItem.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

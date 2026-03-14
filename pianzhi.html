@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>偏执（王嘉宝）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"><rect width="1" height="1" fill="%23e0e0e0"/></svg>');
+            background-size: 4px 4px;
+        }
+        .top-container {
+            width: 100%;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            border-bottom: 1px solid #eee;
+        }
+        .top-title {
+            width: 100%;
+            padding: 8px 16px;
+            text-align: center;
+        }
+        .top-title h1 {
+            font-size: 20px;
+            font-weight: 900;
+            color: #000;
+            white-space: nowrap;
+        }
+        .top-nav {
+            width: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 8px 16px;
+        }
+        .nav-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .nav-list a {
+            text-decoration: none;
+            color: #0066cc;
+            font-size: 16px;
+        }
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+        .person-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 90%;
+            max-width: 450px; 
+            margin: 20px auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background: linear-gradient(90deg, #ff69b4, #ff1493, #00bfff, #32cd32, #ffd700, #ff69b4);
+            background-size: 500% 100%;
+            animation: gradientFlow 15s linear infinite;
+            color: #fff;
+            padding: 12px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .top-text-section {
+            padding: 20px 24px 0;
+            text-align: center;
+        }
+        .quote-mark {
+            color: #9370db; 
+            font-size: 24px;
+            font-weight: bold;
+            vertical-align: super;
+        }
+        .quote-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: #000;
+            line-height: 1.4;
+            margin: 10px 0;
+        }
+        .quote-author {
+            text-align: right;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            padding-right: 10px;
+        }
+        .quote-content {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #000;
+            text-align: left;
+            padding-bottom: 20px;
+        }
+        .card-avatar {
+            padding: 0 24px 16px;
+            text-align: center;
+        }
+        .card-avatar img {
+            width: 240px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .card-nickname {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 500;
+            padding: 8px 0 16px;
+            color: #000;
+        }
+        .card-info {
+            padding: 0 24px 24px;
+        }
+        .info-row {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        .info-label {
+            width: 30%;
+            font-size: 18px;
+            color: #333;
+        }
+        .info-value {
+            width: 70%;
+            font-size: 18px;
+            color: #000;
+            line-height: 1.5;
+        }
+        .stars {
+            color: #000;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <div class="top-title">
+            <h1>聚是一团火，散是满天星</h1>
+        </div>
+        <nav class="top-nav">
+            <img class="nav-icon" src="firstlogo.jpg" alt="蓝猫LOGO">
+            <ul class="nav-list">
+                <li><a href="./lanmao.html" target="_blank">关于蓝猫</a></li>
+                <li><a href="./aboutus.html" target="_blank">关于团队</a></li>
+                <li><a href="./codm.html" target="_blank">关于c圈</a></li>
+                <li><a href="./more.html" target="_blank">更多详情</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="person-card">
+        <div class="card-header">
+            偏执·王嘉宝
+        </div>
+
+        <div class="top-text-section">
+            <span class="quote-mark">“</span>
+            <div class="quote-title">气死我了，我要弄一下炒饭店老板！</div>
+            <span class="quote-mark">”</span>
+            
+            <div class="quote-author">——偏执·王嘉宝</div>
+            
+            <div class="quote-content">
+               原出身于fh圈后于24年接触c圈 早期巴结林文龙曲浩鑫起家<br> 后来结识了天宇并加入沧澜依靠神秘人在背后默默帮助<br>
+               疯狂开人 在沧澜期间开出上百人全家被誉为沧澜第一战神 并在与罪恶 却门 天堂等数个组织的大战中展露头脚 被人所注意到<br> 沧澜因为内部问题封存后跟随天宇加入黑水<br> 并且因为个人能力被隐尘看好并与其交好引入黑星并短短数日使其成为黑星老大 <br> 在黑水期间偏执多次于战斗中一往无前被多数人称赞并结交成为了当时黑水最后话语权的人之一<br> 同时也为日后的事情埋下了伏笔 绿灯侠与祖力亚尔的冲突爆发导致偏执被天宇排挤出黑水<br> 偏执回到了c圈并加入新月驻c 苏无尘看到了偏执的能力便与之交好 也因此发生了后来是偏执给花花做法上坟事件（烧纸）后来新月驻c与茶家握手言和<br> 偏执与范昌瑞交好曲浩鑫见势不妙 立刻开始背刺 在背后传言 声称偏执反骨背刺<br> 导致一些不明真相的人对偏执进行侮辱其中包含了偏执早年间最要好的几位朋友 而天宇则端坐高堂之上置之不理 偏执彻底死心 宣布退网<br> 半年后却突然出现在白火并且短短一月就上任白火老大<br> 并且是祈恋榜明面上的负责人之一 深受茶子重用与斩首的信任<br> 后来加入蓝猫并在神秘人的扶持上成为高层 并且持续活跃于网上
+            </div>
+        </div>
+
+        <div class="card-avatar">
+            <img src="pz.jpg" alt="王嘉宝">
+        </div>
+        <div class="card-nickname">对于烤肠执念至深</div>
+
+        <div class="card-info">
+            <div class="info-row">
+                <div class="info-label">姓名</div>
+                <div class="info-value">王嘉宝</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">常用ID</div>
+                <div class="info-value">
+                    It's all futile.<br>
+                    N0Redemption<br>
+                    心平能愈三千疾<br>
+                    偏执ovo
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">职业</div>
+                <div class="info-value">
+                    茶家门卫<br>双亲献祭者<br>美利坚信徒<br>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">能力</div>
+                <div class="info-value">
+                   出道<br>
+                   吹牛<br>
+                   套皮钦点<br>
+                   信息盗窃<br>
+                   偷号<br>
+                   精神润美
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">硬度/智商</div>
+                <div class="info-value">
+                    <span class="stars">★★★★/0.01</span>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">活跃度</div>
+                <div class="info-value">中</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

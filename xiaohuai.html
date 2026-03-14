@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小坏（顾祯睿）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"><rect width="1" height="1" fill="%23e0e0e0"/></svg>');
+            background-size: 4px 4px;
+        }
+        .top-container {
+            width: 100%;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            border-bottom: 1px solid #eee;
+        }
+        .top-title {
+            width: 100%;
+            padding: 8px 16px;
+            text-align: center;
+        }
+        .top-title h1 {
+            font-size: 20px;
+            font-weight: 900;
+            color: #000;
+            white-space: nowrap;
+        }
+        .top-nav {
+            width: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 8px 16px;
+        }
+        .nav-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .nav-list a {
+            text-decoration: none;
+            color: #0066cc;
+            font-size: 16px;
+        }
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+        .person-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 90%;
+            max-width: 450px; 
+            margin: 20px auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background: linear-gradient(90deg, #1e90ff, #00bfff, #87ceeb, #6495ed, #4169e1, #1e90ff);
+            background-size: 500% 100%;
+            animation: gradientFlow 15s linear infinite;
+            color: #fff;
+            padding: 12px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .top-text-section {
+            padding: 20px 24px 0;
+            text-align: center;
+        }
+        .quote-mark {
+            color: #9370db; 
+            font-size: 24px;
+            font-weight: bold;
+            vertical-align: super;
+        }
+        .quote-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: #000;
+            line-height: 1.4;
+            margin: 10px 0;
+        }
+        .quote-author {
+            text-align: right;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            padding-right: 10px;
+        }
+        .quote-content {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #000;
+            text-align: left;
+            padding-bottom: 20px;
+        }
+        .card-avatar {
+            padding: 0 24px 16px;
+            text-align: center;
+        }
+        .card-avatar img {
+            width: 240px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .card-nickname {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 500;
+            padding: 8px 0 16px;
+            color: #000;
+        }
+        .card-info {
+            padding: 0 24px 24px;
+        }
+        .info-row {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        .info-label {
+            width: 30%;
+            font-size: 18px;
+            color: #333;
+        }
+        .info-value {
+            width: 70%;
+            font-size: 18px;
+            color: #000;
+            line-height: 1.5;
+        }
+        .stars {
+            color: #000;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <div class="top-title">
+            <h1>聚是一团火，散是满天星</h1>
+        </div>
+        <nav class="top-nav">
+            <img class="nav-icon" src="firstlogo.jpg" alt="蓝猫LOGO">
+            <ul class="nav-list">
+                <li><a href="./lanmao.html" target="_blank">关于蓝猫</a></li>
+                <li><a href="./aboutus.html" target="_blank">关于团队</a></li>
+                <li><a href="./codm.html" target="_blank">关于c圈</a></li>
+                <li><a href="./more.html" target="_blank">更多详情</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="person-card">
+        <div class="card-header">
+            小坏·顾祯睿
+        </div>
+        <div class="top-text-section">
+            <span class="quote-mark">“</span>
+            <div class="quote-title">晚上继续tt走起</div>
+            <span class="quote-mark">”</span>
+            
+            <div class="quote-author">——小坏·顾祯睿</div>
+            
+            <div class="quote-content">
+             小坏 实名顾祯睿 25年九月入圈 25年3月玩cod时拜师无间老大恶名 一直跟着他学技术<br> 在8月还未正式入圈时上任当时低谷期的白山 9月和隐皇枷锁等反c 一夜下掉对方十几个账号 期间开创组织诅咒之海 培养出梁子浩等知名c人物 同时结识神星雪 命石等 结为兄弟 并在他们的帮助下过渡发展<br> 10月开始玩fh 在微信和抖音领域小有成就 后被青铜拉去抢黑水 背后提供技术 期间开始培养谭云怡 <br>后面拜师喻森一 在喻森一手底下发展 技术也更进一步 在12月由于学业退圈
+            </div>
+        </div>
+        <div class="card-avatar">
+            <img src="gzr.jpg" alt="顾祯睿">
+        </div>
+        <div class="card-nickname">今天我要单喽你</div>
+        <div class="card-info">
+            <div class="info-row">
+                <div class="info-label">姓名</div>
+                <div class="info-value">顾祯睿</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">常用ID</div>
+                <div class="info-value">
+                    夜雨声烦<br>
+                    小坏<br>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">职业</div>
+                <div class="info-value">
+                    三角洲血性黑奴<br>
+                    寻血猎犬
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">能力</div>
+                <div class="info-value">
+                   女权文化宣扬<br>
+                   二改接口<br>
+                   出道意淫<br>
+                   卖骚
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">硬度/智商</div>
+                <div class="info-value">
+                    <span class="stars">★★★★/0.01</span>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">活跃度</div>
+                <div class="info-value">低</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

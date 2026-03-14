@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法老（焦鹏恺）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"><rect width="1" height="1" fill="%23e0e0e0"/></svg>');
+            background-size: 4px 4px;
+        }
+        .top-container {
+            width: 100%;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            border-bottom: 1px solid #eee;
+        }
+        .top-title {
+            width: 100%;
+            padding: 8px 16px;
+            text-align: center;
+        }
+        .top-title h1 {
+            font-size: 20px;
+            font-weight: 900;
+            color: #000;
+            white-space: nowrap;
+        }
+        .top-nav {
+            width: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 8px 16px;
+        }
+        .nav-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .nav-list a {
+            text-decoration: none;
+            color: #0066cc;
+            font-size: 16px;
+        }
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+        .person-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 90%;
+            max-width: 450px; 
+            margin: 20px auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .card-header {
+            background: linear-gradient(90deg, #ff69b4, #ff1493, #00bfff, #32cd32, #ffd700, #ff69b4);
+            background-size: 500% 100%;
+            animation: gradientFlow 15s linear infinite;
+            color: #fff;
+            padding: 20px 70px 20px 12px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            position: relative;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px 16px 0 0;
+        }
+        .header-sticker {
+            position: absolute;
+            top: 50%;
+            right: -35px;
+            transform: translateY(-50%);
+            width: 90px;
+            height: 90px;
+            z-index: 10;
+        }
+        .header-sticker img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: transparent;
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .top-text-section {
+            padding: 20px 24px 0;
+            text-align: center;
+        }
+        .quote-mark {
+            color: #9370db; 
+            font-size: 24px;
+            font-weight: bold;
+            vertical-align: super;
+        }
+        .quote-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: #000;
+            line-height: 1.4;
+            margin: 10px 0;
+        }
+        .quote-author {
+            text-align: right;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            padding-right: 10px;
+        }
+        .quote-content {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #000;
+            text-align: left;
+            padding-bottom: 20px;
+        }
+        .card-avatar {
+            padding: 0 24px 16px;
+            text-align: center;
+            line-height: 0;
+        }
+        .card-avatar img {
+            width: 240px;
+            height: auto;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+        .card-nickname {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 500;
+            padding: 8px 0 16px;
+            color: #000;
+        }
+        .card-info {
+            padding: 0 24px 24px;
+        }
+        .info-row {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        .info-label {
+            width: 30%;
+            font-size: 18px;
+            color: #333;
+        }
+        .info-value {
+            width: 70%;
+            font-size: 18px;
+            color: #000;
+            line-height: 1.5;
+        }
+        .stars {
+            color: #000;
+            font-size: 20px;
+        }
+        .detail-toggle {
+            width: 90%;
+            max-width: 450px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .toggle-btn {
+            width: 100%;
+            padding: 15px 20px;
+            background: transparent;
+            border: none;
+            font-size: 18px;
+            font-weight: 500;
+            color: #000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .toggle-btn:hover {
+            background: rgba(0, 102, 204, 0.1);
+        }
+        .toggle-icon {
+            font-size: 20px;
+            color: #000;
+            transition: transform 0.3s ease;
+        }
+        .toggle-icon.rotate {
+            transform: rotate(180deg);
+        }
+        .detail-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .detail-content.show {
+            padding: 20px;
+            max-height: 500px;
+        }
+        .detail-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <div class="top-title">
+            <h1>聚是一团火，散是满天星</h1>
+        </div>
+        <nav class="top-nav">
+            <img class="nav-icon" src="firstlogo.jpg" alt="蓝猫LOGO">
+            <ul class="nav-list">
+                <li><a href="./lanmao.html" target="_blank">关于蓝猫</a></li>
+                <li><a href="./aboutus.html" target="_blank">关于团队</a></li>
+                <li><a href="./codm.html" target="_blank">关于c圈</a></li>
+                <li><a href="./more.html" target="_blank">更多详情</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="person-card">
+        <div class="card-header">
+            法老·焦鹏恺
+            <div class="header-sticker">
+                <img src="jpk.png" alt="头部贴图">
+            </div>
+        </div>
+        <div class="top-text-section">
+            <span class="quote-mark">“</span>
+            <div class="quote-title">一包烟钱的事情而已！</div>
+            <span class="quote-mark">”</span>
+            <div class="quote-author">——法老·焦鹏恺</div>
+            <div class="quote-content">   法老，东联老大，a社副社长松风的亲传子弟，曾经是其内定的a社宝藏继承人，早期在c圈跟随满树天星混迹白火等组织，慢慢积攒人脉，厚积薄发。同时在出道，下号方面都有动人的天赋。偶尔会发动令人咋舌的钞票羞辱技能，令众多恶俗狗，望洋兴叹！鉴于本站中肯以及综合的评断来看，焦先生是一位极具艺术色彩，低调主义的人士。本站同时也在这对法老先生表示由衷的感谢，为本站的维护提供了资金！</div>
+        </div>
+        <div class="card-avatar">
+            <img src="jpk.png" alt="焦鹏恺">
+        </div>
+        <div class="card-nickname">利群杀手</div>
+        <div class="card-info">
+            <div class="info-row">
+                <div class="info-label">姓名</div>
+                <div class="info-value">焦鹏恺</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">常用ID</div>
+                <div class="info-value">法老<br>
+                秋落漠河<br></div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">职业</div>
+                <div class="info-value"><br>比尔盖茨之子<br>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">能力</div>
+                <div class="info-value">出道 <br>偷号<br>钞票羞辱</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">硬度/智商</div>
+                <div class="info-value"><span class="stars">★★★★/∞∞∞∞</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">活跃度</div>
+                <div class="info-value">低</div>
+            </div>
+        </div>
+    </div>
+    <div class="detail-toggle">
+        <button class="toggle-btn" id="detailBtn">
+            关于法老·焦鹏恺
+            <span class="toggle-icon" id="toggleIcon">▼</span>
+        </button>
+        <div class="detail-content" id="detailContent">
+            <div class="detail-text">
+               法老（焦鹏恺)先生，是一个具有宽阔胸怀，博爱之心的纯良人士，不同那些拉屎喷粪的恶俗狗，焦先生的存在就是一股流经该圈的一股清流！
+            </div>
+        </div>
+    </div>
+    <script>
+        const detailBtn = document.getElementById('detailBtn');
+        const detailContent = document.getElementById('detailContent');
+        const toggleIcon = document.getElementById('toggleIcon');
+        detailBtn.addEventListener('click', () => {
+            detailContent.classList.toggle('show');
+            toggleIcon.classList.toggle('rotate');
+            detailBtn.innerHTML = detailContent.classList.contains('show') 
+                ? '收起 <span class="toggle-icon rotate" id="toggleIcon">▼</span>' 
+                : '关于法老·焦鹏恺 <span class="toggle-icon" id="toggleIcon">▼</span>';
+        });
+    </script>
+</body>
+</html>
