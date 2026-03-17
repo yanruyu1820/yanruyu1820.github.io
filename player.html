@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>蓝猫神教</title>
+<style>
+* {margin:0;padding:0;box-sizing:border-box;}
+body {margin:0;padding:0;height:60px;}
+.music-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 9999;
+}
+.music-info {
+  flex: 1;
+}
+.music-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+.music-artist {
+  font-size: 14px;
+  color: #666;
+}
+.music-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+}
+</style>
+</head>
+<body>
+<div class="music-bar">
+  <div class="music-info">
+    <div class="music-title">岁月如歌</div>
+    <div class="music-artist">陈奕迅</div>
+  </div>
+  <button class="music-btn" id="prevBtn">⏮</button>
+  <button class="music-btn" id="playBtn">▶</button>
+  <button class="music-btn" id="nextBtn">⏭</button>
+</div>
+<audio id="bgMusic" src="岁月如歌.mp3" preload="auto" loop>
+<script>
+const playBtn = document.getElementById('playBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const bgMusic = document.getElementById('bgMusic');
+const titleEl = document.querySelector('.music-title');
+const artistEl = document.querySelector('.music-artist');
+let isPlaying = false;
+const playlist = [
+  { src: "岁月如歌.mp3", title: "岁月如歌", artist: "陈奕迅" },
+   { src: "蝴蝶.mp3", title: "蝴蝶", artist: "陶喆" },
+ { src: "飞机场的十点半.mp3", title: "飞机场的十点半", artist: "陶喆" },
+  { src: "你瞒我瞒.mp3", title: "你瞒我瞒", artist: "陈柏宇" },
+   { src: "借口.mp3", title: "借口", artist: "周杰伦" },
+    { src: "麦恩莉.mp3", title: "麦恩莉", artist: "方大同" },
+     { src: "爱爱爱.mp3", title: "爱爱爱", artist: "方大同" },
+      { src: "葡萄成熟时.mp3", title: "葡萄成熟时", artist: "陈奕迅" },
+       { src: "最佳损友.mp3", title: "最佳损友", artist: "陈奕迅" },
+        { src: "广东爱情故事.mp3", title: "广东爱情故事", artist: "广东雨神" },
+         { src: "富士山下.mp3", title: "富士山下", artist: "陈奕迅" },
+];
+let currentTrack = 0;
+
+function loadTrack(index) {
+  currentTrack = (index + playlist.length) % playlist.length;
+  const track = playlist[currentTrack];
+  bgMusic.src = track.src;
+  titleEl.textContent = track.title;
+  artistEl.textContent = track.artist;
+  bgMusic.load();
+  if (isPlaying) bgMusic.play();
+}
+
+playBtn.addEventListener('click', async () => {
+  if (isPlaying) {
+    bgMusic.pause();
+    playBtn.textContent = '▶';
+  } else {
+    try {
+      await bgMusic.play();
+      playBtn.textContent = '||';
+    } catch (e) {
+      alert("播放失败：检查「岁月如歌.mp3」和player.html在同一文件夹，文件名完全一致！");
+    }
+  }
+  isPlaying = !isPlaying;
+});
+
+prevBtn.addEventListener('click', () => loadTrack(currentTrack - 1));
+nextBtn.addEventListener('click', () => loadTrack(currentTrack + 1));
+bgMusic.addEventListener('ended', () => loadTrack(currentTrack + 1));
+
+loadTrack(0);
+
+window.onunload = function() {};
+</script>
+</body>
+</html>
